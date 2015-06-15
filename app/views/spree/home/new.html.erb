@@ -1,0 +1,20 @@
+
+<form method="post" action="payment">
+  <div id="dropin"></div>
+  <input type="submit" class="btn btn-primary active" role="button" value="Pay $50">
+
+</form>
+
+<script type="text/javascript">
+  function setupBT() {
+    braintree.setup("<%=@client_token%>", 'dropin', {
+      container: 'dropin'
+    });
+  }
+  if (window.addEventListener)
+    window.addEventListener("load", setupBT, false);
+  else if (window.attachEvent)
+    window.attachEvent("onload", setupBT);
+  else window.onload = setupBT;
+  </script>
+</script>

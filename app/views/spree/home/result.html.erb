@@ -1,0 +1,47 @@
+<h2>Result</h2>
+<%= @success %>
+<br/>
+<%= @transaction_id %>
+<br/>
+<%= @result.inspect %>
+
+
+<div class="container">
+         
+  <table class="table table-condensed" >
+   
+    <tbody>
+      <tr class="success">
+        <td>Success</td>
+        <td><%= @success %></td>
+        
+      </tr>
+      <tr class="danger">
+        <td>Transaction ID</td>
+        <td><%= @transaction_id %></td>
+        
+      </tr>
+      <tr class="info">
+        <td>Type</td>
+        <td><%= @result.transaction.type%></td>
+        
+      </tr>
+        <tr class="success">
+        <td>Amount</td>
+        <td><%= @result.transaction.amount %></td>
+        
+      </tr>
+      <tr class="danger">
+        <td>Status</td>
+        <td><%= @result.transaction.status%></td>
+        
+      </tr>
+      <tr class="info">
+        <td>Created at</td>
+        <td><%= @result.transaction.created_at%></td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <a href="/new" type="button" class="btn btn-primary active" role="button">Home</a>
+</div>
