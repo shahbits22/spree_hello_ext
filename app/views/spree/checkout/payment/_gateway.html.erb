@@ -1,10 +1,32 @@
 <% if payment_method.name == "Braintree" %>
-  <% client_token = Braintree::ClientToken.generate %>
+  <%= client_token = Braintree::ClientToken.generate %>
 
- <div id="dropin"></div>
-<script type="text/javascript">
+  <div id="dropin"></div>
+  <script type="text/javascript">
+  braintreeSetup = false;
+  $('#payment-method-fields input').on('click', function(){
+    console.log(this);
+    if($('#payment-method-fields input:checked').parent().text().trim() === 'Braintree'){
+      if(!braintreeSetup){
+        setup_braintree();
+        braintreeSetup = true;
+      }
+    
+  }
+  });
 
-console.log("Hello");
+  else{
+    $('#dropin').empty();
+  }
+  
+  function setup_braintree(){
+     braintree.setup("<%=client_token%>", 'dropin', {
+      container: 'dropin'
+    });
+     console.log("Hellooooo!!!!");
+  }
+ 
+  
 </script>
 
 <% else %>
